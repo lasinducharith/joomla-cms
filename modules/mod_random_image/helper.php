@@ -18,55 +18,33 @@ defined('_JEXEC') or die;
  */
 class ModRandomImageHelper
 {
+
 	public static function getRandomImage(&$params, $images)
 	{
-		$width	= $params->get('width');
-		$height	= $params->get('height');
+		$width = $params->get('width');
+		$height = $params->get('height');
 
-		$i      = count($images);
+		$i = count($images);
 		$random = mt_rand(0, $i - 1);
-		$image  = $images[$random];
-		$size   = getimagesize(JPATH_BASE . '/' . $image->folder . '/' . $image->name);
+		$image = $images[$random];
+		$jImage = new JImage(JPATH_BASE . '/' . $image->folder . '/' . $image->name);
+		$jImage->relativePath = $image->folder . '/' . $image->name;
+		$jImage->name = $image->name;
 
-		if ($width == '')
+		if ($width == "" && $height == "")
 		{
-			$width = 100;
-		}
-
-		if ($size[0] < $width)
-		{
-			$width = $size[0];
-		}
-
-		$coeff = $size[0] / $size[1];
-		if ($height == '')
-		{
-			$height = (int) ($width / $coeff);
+			return $jImage;
 		}
 		else
 		{
-			$newheight = min($height, (int) ($width / $coeff));
-			if ($newheight < $height)
-			{
-				$height = $newheight;
-			} else {
-				$width = $height * $coeff;
-			}
+			return $jImage->cropResize($width, $height, false);
 		}
-
-		$image->width	= $width;
-		$image->height	= $height;
-		$image->folder	= str_replace('\\', '/', $image->folder);
-
-		return $image;
 	}
 
 	public static function getImages(&$params, $folder)
 	{
-		$type		= $params->get('type', 'jpg');
-
-		$files	= array();
-		$images	= array();
+		$files = array();
+		$images = array();
 
 		$dir = JPATH_BASE . '/' . $folder;
 
@@ -90,12 +68,13 @@ class ModRandomImageHelper
 			{
 				if (!is_dir($dir . '/' . $img))
 				{
-					if (preg_match('/'.$type.'/', $img))
+					// Check for image types JPG/PNG/GIF which are supported by JImage
+					if (preg_match('/' . '.jpg' . '\z/', $img) || preg_match('/' . '.png' . '\z/', $img) || preg_match('/' . '.gif' . '\z/', $img))
 					{
 						$images[$i] = new stdClass;
 
-						$images[$i]->name	= $img;
-						$images[$i]->folder	= $folder;
+						$images[$i]->name = $img;
+						$images[$i]->folder = $folder;
 						$i++;
 					}
 				}
@@ -107,16 +86,16 @@ class ModRandomImageHelper
 
 	public static function getFolder(&$params)
 	{
-		$folder	= $params->get('folder');
+		$folder = $params->get('folder');
 
-		$LiveSite	= JURI::base();
+		$LiveSite = JURI::base();
 
-		// if folder includes livesite info, remove
+		// If folder includes livesite info, remove
 		if (JString::strpos($folder, $LiveSite) === 0)
 		{
 			$folder = str_replace($LiveSite, '', $folder);
 		}
-		// if folder includes absolute path, remove
+		// If folder includes absolute path, remove
 		if (JString::strpos($folder, JPATH_SITE) === 0)
 		{
 			$folder = str_replace(JPATH_BASE, '', $folder);
