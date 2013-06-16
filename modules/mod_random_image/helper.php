@@ -69,7 +69,7 @@ class ModRandomImageHelper
 				if (!is_dir($dir . '/' . $img))
 				{
 					// Check for image types JPG/PNG/GIF which are supported by JImage
-					if (preg_match('/' . '.jpg' . '\z/', $img) || preg_match('/' . '.png' . '\z/', $img) || preg_match('/' . '.gif' . '\z/', $img))
+					if (preg_match('/' . '(.jpg|.png|.gif)' . '\z/', $img))
 					{
 						$images[$i] = new stdClass;
 

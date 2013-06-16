@@ -11,6 +11,6 @@ defined('_JEXEC') or die;
 
 ?>
 <?php JLoader::register('TagsHelperRoute', JPATH_BASE . '/components/com_tags/helpers/route.php'); ?>
-<div class="tagssimilar<?php echo $moduleclass_sfx; ?>">
+<div class="tagsselected<?php echo $moduleclass_sfx; ?>">
 	<?php echo JLayoutHelper::render('joomla.modules.tag_articles', $list); ?>
 </div>
