@@ -20,6 +20,8 @@ class ModImageSliderHelper
 {
 	public static function getSlides(&$params)
 	{
+		$slides = array();
+
 		for ($i = 1; $i <= 5; $i++)
 		{
 			$slides[$i] = new stdClass;
