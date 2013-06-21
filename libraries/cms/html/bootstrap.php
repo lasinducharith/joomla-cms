@@ -134,9 +134,9 @@ abstract class JHtmlBootstrap
 	}
 
 	/**
-	 * Add javascript support for Bootstrap carousels
+	 * Add JavaScript support for Bootstrap carousels
 	 *
-	 * @param   string  $selector  Common class for the carousels.
+	 * @param   string  $selector  Common selector for the carousels.
 	 * @param   array   $params    An array of options for the modal.
 	 *                             Options for the modal can be:
 	 *                             - interval  number  The amount of time to delay between automatically cycling an item.
@@ -146,9 +146,10 @@ abstract class JHtmlBootstrap
 	 *
 	 * @return  void
 	 *
+	 * @note    As of 3.x, $selector must specify itself as a class or id selector
 	 * @since   3.0
 	 */
-	public static function carousel($selector = 'carousel', $params = array())
+	public static function carousel($selector = '.carousel', $params = array())
 	{
 		$sig = md5(serialize(array($selector, $params)));
 
@@ -166,7 +167,7 @@ abstract class JHtmlBootstrap
 			// Attach the carousel to document
 			JFactory::getDocument()->addScriptDeclaration(
 				"(function($){
-					$('.$selector').carousel($options);
+					$('$selector').carousel($options);
 					})(jQuery);"
 			);
 
