@@ -11,21 +11,25 @@ defined('_JEXEC') or die;
 
 // Initialise Bootstrap Carousel Component
 JHtml::_('bootstrap.carousel', '#slider', array('interval' => $interval));
+
 ?>
 
 <div class="image-slider<?php echo $moduleclass_sfx ?>">
 	<div id="slider" class="carousel slide">
-		<ol class="carousel-indicators">
-			<?php foreach ($slideSet as $index => $slide) : ?>
-				<?php if ($slide->image != null) : ?>
-					<?php if ($index == 1) : ?>
-						<li data-target="#slider" data-slide-to="0" class="active"></li>
-					<?php else : ?>
-						<li data-target="#slider" data-slide-to="<?php echo $index - 1 ?>"></li>
+		<?php if ($navigation): ?>
+			<ol class="carousel-indicators">
+				<?php foreach ($slideSet as $index => $slide) : ?>
+					<?php if ($slide->image != null) : ?>
+						<?php if ($index == 1) : ?>
+							<li data-target="#slider" data-slide-to="0" class="active"></li>
+						<?php else : ?>
+							<li data-target="#slider" data-slide-to="<?php echo $index - 1 ?>"></li>
+						<?php endif; ?>
 					<?php endif; ?>
-				<?php endif; ?>
-			<?php endforeach; ?>
-		</ol>
+				<?php endforeach; ?>
+			</ol>
+		<?php endif; ?>
+		
 		<div class="carousel-inner">
 			<?php foreach ($slideSet as $index => $slide) : ?>
 			<?php if ($slide->image != null) : ?>
@@ -49,8 +53,11 @@ JHtml::_('bootstrap.carousel', '#slider', array('interval' => $interval));
 				<?php endif; ?>
 				<?php endforeach; ?>
 			</div>
-			<a class="carousel-control left" href="#slider" data-slide="prev">&lsaquo;</a>
-			<a class="carousel-control right" href="#slider" data-slide="next">&rsaquo;</a>
+			
+			<?php if ($controls): ?>
+				<a class="carousel-control left" href="#slider" data-slide="prev">&lsaquo;</a>
+				<a class="carousel-control right" href="#slider" data-slide="next">&rsaquo;</a>
+			<?php endif; ?>
 		</div>
 	</div>
 </div>

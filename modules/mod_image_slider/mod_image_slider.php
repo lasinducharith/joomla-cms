@@ -13,6 +13,16 @@ defined('_JEXEC') or die;
 require_once __DIR__ . '/helper.php';
 
 $slideSet = ModImageSliderHelper::getSlides($params);
-$interval = $params->get('interval', 5000);
+
+$interval = (int) $params->get('interval', 5000);
+$autostart = $params->get('autostart', 1);
+$navigation = $params->get('navigation', 1);
+$controls = $params->get('controls', 1);
+
+// Carousel interval also defines autostart
+if (!$autostart) {
+	$interval = 'false';
+}
+
 $moduleclass_sfx = htmlspecialchars($params->get('moduleclass_sfx'));
 require JModuleHelper::getLayoutPath('mod_image_slider', $params->get('layout', 'default'));
