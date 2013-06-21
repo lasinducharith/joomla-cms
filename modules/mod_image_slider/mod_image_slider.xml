@@ -40,8 +40,8 @@
 
 				<field
                         name="interval"
-                        default="5000"
                         type="text"
+						default="5000"
                         label="MOD_IMAGE_SLIDER_FIELD_INTERVAL_LABEL"
                         description="MOD_IMAGE_SLIDER_FIELD_INTERVAL_DESC"/>
 
