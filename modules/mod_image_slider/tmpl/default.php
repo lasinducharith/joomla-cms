@@ -10,7 +10,7 @@
 defined('_JEXEC') or die;
 ?>
 
-<div class="random-image<?php echo $moduleclass_sfx ?>">
+<div class="image-slider<?php echo $moduleclass_sfx ?>">
 	<div id="slider" class="carousel slide">
 		<ol class="carousel-indicators">
 			<?php foreach ($slideSet as $index => $slide) : ?>
