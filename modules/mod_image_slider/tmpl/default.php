@@ -12,6 +12,17 @@ defined('_JEXEC') or die;
 
 <div class="random-image<?php echo $moduleclass_sfx ?>">
 	<div id="slider" class="carousel slide">
+		<ol class="carousel-indicators">
+			<?php foreach ($slideSet as $index => $slide) : ?>
+				<?php if ($slide->image != null) : ?>
+					<?php if ($index == 1) : ?>
+						<li data-target="#slider" data-slide-to="0" class="active"></li>
+					<?php else : ?>
+						<li data-target="#slider" data-slide-to="<?php echo $index - 1 ?>"></li>
+					<?php endif; ?>
+				<?php endif; ?>
+			<?php endforeach; ?>
+		</ol>
 		<div class="carousel-inner">
 			<?php foreach ($slideSet as $index => $slide) : ?>
 			<?php if ($slide->image != null) : ?>
