@@ -14,6 +14,8 @@ require_once __DIR__ . '/helper.php';
 
 $slideSet = ModImageSliderHelper::getSlides($params);
 
+$id	= $module->id;
+
 $interval = (int) $params->get('interval', 5000);
 $autostart = $params->get('autostart', 1);
 $navigation = $params->get('navigation', 1);
