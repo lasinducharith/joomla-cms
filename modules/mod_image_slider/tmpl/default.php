@@ -8,6 +8,9 @@
  */
 
 defined('_JEXEC') or die;
+
+// Initialise Bootstrap Carousel Component
+JHtml::_('bootstrap.carousel', '#slider', array('interval' => $interval));
 ?>
 
 <div class="image-slider<?php echo $moduleclass_sfx ?>">
@@ -49,19 +52,5 @@ defined('_JEXEC') or die;
 			<a class="carousel-control left" href="#slider" data-slide="prev">&lsaquo;</a>
 			<a class="carousel-control right" href="#slider" data-slide="next">&rsaquo;</a>
 		</div>
-
-		<script type="text/javascript">
-
-			var $ = jQuery.noConflict();
-			$(document).ready(function () {
-				$('#slider').carousel({
-					interval: <?php echo $interval ?>,
-					cycle: true
-				});
-			});
-
-		</script>
 	</div>
-
-
-
+</div>
