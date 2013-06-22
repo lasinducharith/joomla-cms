@@ -28,47 +28,50 @@
     <config>
         <fields name="params">
             <fieldset name="basic">
-				<field
+                <field
                         name="autostart"
-                        type="list"
-						default="1"
+                        type="radio"
+                        class="btn-group"
+                        default="1"
                         label="MOD_IMAGE_SLIDER_FIELD_AUTOSTART_LABEL"
                         description="MOD_IMAGE_SLIDER_FIELD_AUTOSTART_DESC">
-					<option value="1">JYES</option>
-					<option value="0">JNO</option>
-                </field>
-
-				<field
-                        name="interval"
-                        type="text"
-						default="5000"
-                        label="MOD_IMAGE_SLIDER_FIELD_INTERVAL_LABEL"
-                        description="MOD_IMAGE_SLIDER_FIELD_INTERVAL_DESC"/>
-
-				<field
-                        name="navigation"
-                        type="list"
-						default="1"
-                        label="MOD_IMAGE_SLIDER_FIELD_NAVIGATION_LABEL"
-                        description="MOD_IMAGE_SLIDER_FIELD_NAVIGATION_DESC">
-					<option value="1">JYES</option>
-					<option value="0">JNO</option>
-                </field>
-
-				<field
-                        name="controls"
-                        type="list"
-						default="1"
-                        label="MOD_IMAGE_SLIDER_FIELD_CONTROLS_LABEL"
-                        description="MOD_IMAGE_SLIDER_FIELD_CONTROLS_DESC">
-					<option value="1">JYES</option>
-					<option value="0">JNO</option>
+                    <option value="1">JYES</option>
+                    <option value="0">JNO</option>
                 </field>
 
                 <field
-						type="spacer" 
-						name="spacer1"
-						label="MOD_IMAGE_SLIDER_FIELD_SPACER1_LABEL" />
+                        name="interval"
+                        type="text"
+                        default="5000"
+                        label="MOD_IMAGE_SLIDER_FIELD_INTERVAL_LABEL"
+                        description="MOD_IMAGE_SLIDER_FIELD_INTERVAL_DESC"/>
+
+                <field
+                        name="navigation"
+                        type="radio"
+                        class="btn-group"
+                        default="1"
+                        label="MOD_IMAGE_SLIDER_FIELD_NAVIGATION_LABEL"
+                        description="MOD_IMAGE_SLIDER_FIELD_NAVIGATION_DESC">
+                    <option value="1">JYES</option>
+                    <option value="0">JNO</option>
+                </field>
+
+                <field
+                        name="controls"
+                        type="radio"
+                        class="btn-group"
+                        default="1"
+                        label="MOD_IMAGE_SLIDER_FIELD_CONTROLS_LABEL"
+                        description="MOD_IMAGE_SLIDER_FIELD_CONTROLS_DESC">
+                    <option value="1">JYES</option>
+                    <option value="0">JNO</option>
+                </field>
+
+                <field
+                        type="spacer"
+                        name="spacer1"
+                        label="MOD_IMAGE_SLIDER_FIELD_SPACER1_LABEL"/>
 
                 <field name="image1"
                        type="media"
@@ -91,9 +94,9 @@
                         description="MOD_IMAGE_SLIDER_FIELD_DESCRIPTION_DESC"/>
 
                 <field
-						type="spacer" 
-						name="spacer2"
-						label="MOD_IMAGE_SLIDER_FIELD_SPACER2_LABEL" />
+                        type="spacer"
+                        name="spacer2"
+                        label="MOD_IMAGE_SLIDER_FIELD_SPACER2_LABEL"/>
 
                 <field name="image2"
                        type="media"
@@ -115,10 +118,10 @@
                         label="MOD_IMAGE_SLIDER_FIELD_DESCRIPTION_LABEL"
                         description="MOD_IMAGE_SLIDER_FIELD_DESCRIPTION_DESC"/>
 
-				<field
-						type="spacer" 
-						name="spacer3"
-						label="MOD_IMAGE_SLIDER_FIELD_SPACER3_LABEL" />
+                <field
+                        type="spacer"
+                        name="spacer3"
+                        label="MOD_IMAGE_SLIDER_FIELD_SPACER3_LABEL"/>
 
                 <field name="image3"
                        type="media"
@@ -141,9 +144,9 @@
                         description="MOD_IMAGE_SLIDER_FIELD_DESCRIPTION_DESC"/>
 
                 <field
-						type="spacer" 
-						name="spacer4"
-						label="MOD_IMAGE_SLIDER_FIELD_SPACER4_LABEL" />
+                        type="spacer"
+                        name="spacer4"
+                        label="MOD_IMAGE_SLIDER_FIELD_SPACER4_LABEL"/>
 
                 <field name="image4"
                        type="media"
@@ -166,9 +169,9 @@
                         description="MOD_IMAGE_SLIDER_FIELD_DESCRIPTION_DESC"/>
 
                 <field
-						type="spacer" 
-						name="spacer5"
-						label="MOD_IMAGE_SLIDER_FIELD_SPACER5_LABEL" />
+                        type="spacer"
+                        name="spacer5"
+                        label="MOD_IMAGE_SLIDER_FIELD_SPACER5_LABEL"/>
 
                 <field name="image5"
                        type="media"
