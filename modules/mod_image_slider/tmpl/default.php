@@ -32,8 +32,8 @@ JHtml::_('bootstrap.carousel', '#slider-' . $id, array('interval' => $interval))
 
 		<div class="carousel-inner">
 			<?php foreach ($slideSet as $index => $slide) : ?>
-			<?php if ($slide->image != null) : ?>
-			<?php if ($index == 1) : ?>
+		<?php if ($slide->image != null) : ?>
+		<?php if ($index == 1) : ?>
 			<div class="item active">
 				<?php else : ?>
 				<div class="item">
@@ -54,10 +54,10 @@ JHtml::_('bootstrap.carousel', '#slider-' . $id, array('interval' => $interval))
 				</div>
 				<?php endif; ?>
 				<?php endforeach; ?>
-				</div>
-				<?php if ($controls): ?>
-					<a class="carousel-control left" href="#slider-<?php echo $id; ?>" data-slide="prev">&lsaquo;</a>
-					<a class="carousel-control right" href="#slider-<?php echo $id; ?>" data-slide="next">&rsaquo;</a>
-				<?php endif; ?>
 			</div>
+			<?php if ($controls): ?>
+				<a class="carousel-control left" href="#slider-<?php echo $id; ?>" data-slide="prev">&lsaquo;</a>
+				<a class="carousel-control right" href="#slider-<?php echo $id; ?>" data-slide="next">&rsaquo;</a>
+			<?php endif; ?>
 		</div>
+	</div>
