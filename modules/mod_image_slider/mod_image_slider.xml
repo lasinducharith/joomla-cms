@@ -28,12 +28,42 @@
     <config>
         <fields name="params">
             <fieldset name="basic">
-                <field
+				<field
+                        name="autostart"
+                        type="list"
+						default="1"
+                        label="MOD_IMAGE_SLIDER_FIELD_AUTOSTART_LABEL"
+                        description="MOD_IMAGE_SLIDER_FIELD_AUTOSTART_DESC">
+					<option value="1">JYES</option>
+					<option value="0">JNO</option>
+                </field>
+
+				<field
                         name="interval"
-                        default="5000"
                         type="text"
+						default="5000"
                         label="MOD_IMAGE_SLIDER_FIELD_INTERVAL_LABEL"
                         description="MOD_IMAGE_SLIDER_FIELD_INTERVAL_DESC"/>
+
+				<field
+                        name="navigation"
+                        type="list"
+						default="1"
+                        label="MOD_IMAGE_SLIDER_FIELD_NAVIGATION_LABEL"
+                        description="MOD_IMAGE_SLIDER_FIELD_NAVIGATION_DESC">
+					<option value="1">JYES</option>
+					<option value="0">JNO</option>
+                </field>
+
+				<field
+                        name="controls"
+                        type="list"
+						default="1"
+                        label="MOD_IMAGE_SLIDER_FIELD_CONTROLS_LABEL"
+                        description="MOD_IMAGE_SLIDER_FIELD_CONTROLS_DESC">
+					<option value="1">JYES</option>
+					<option value="0">JNO</option>
+                </field>
 
                 <field
 						type="spacer" 
