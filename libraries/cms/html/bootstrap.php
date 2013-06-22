@@ -57,9 +57,10 @@ abstract class JHtmlBootstrap
 
 			// Attach the carousel to document
 			JFactory::getDocument()->addScriptDeclaration(
-				"(function($){
-					$('#$selector').affix($options);
-					})(jQuery);"
+				"jQuery(document).ready(function()
+				{
+					jQuery('#$selector').affix($options);
+				});"
 			);
 
 			// Set static array
@@ -91,9 +92,10 @@ abstract class JHtmlBootstrap
 
 		// Attach the alerts to the document
 		JFactory::getDocument()->addScriptDeclaration(
-			"(function($){
-				$('.$selector').alert();
-				})(jQuery);"
+			"jQuery(document).ready(function()
+			{
+				jQuery('.$selector').alert();
+			});"
 		);
 
 		self::$loaded[__METHOD__][$selector] = true;
@@ -123,9 +125,10 @@ abstract class JHtmlBootstrap
 
 		// Attach the alerts to the document
 		JFactory::getDocument()->addScriptDeclaration(
-			"(function($){
-				$('.$selector').button();
-				})(jQuery);"
+			"jQuery(document).ready(function()
+			{
+				jQuery('.$selector').button();
+			});"
 		);
 
 		self::$loaded[__METHOD__][$selector] = true;
@@ -134,9 +137,9 @@ abstract class JHtmlBootstrap
 	}
 
 	/**
-	 * Add JavaScript support for Bootstrap carousels
+	 * Add javascript support for Bootstrap carousels
 	 *
-	 * @param   string  $selector  Common selector for the carousels.
+	 * @param   string  $selector  Common class for the carousels.
 	 * @param   array   $params    An array of options for the modal.
 	 *                             Options for the modal can be:
 	 *                             - interval  number  The amount of time to delay between automatically cycling an item.
@@ -146,10 +149,9 @@ abstract class JHtmlBootstrap
 	 *
 	 * @return  void
 	 *
-	 * @note    As of 3.x, $selector must specify itself as a class or id selector
 	 * @since   3.0
 	 */
-	public static function carousel($selector = '.carousel', $params = array())
+	public static function carousel($selector = 'carousel', $params = array())
 	{
 		$sig = md5(serialize(array($selector, $params)));
 
@@ -166,9 +168,10 @@ abstract class JHtmlBootstrap
 
 			// Attach the carousel to document
 			JFactory::getDocument()->addScriptDeclaration(
-				"(function($){
-					$('$selector').carousel($options);
-					})(jQuery);"
+				"jQuery(document).ready(function()
+				{
+					jQuery('.$selector').carousel($options);
+				});"
 			);
 
 			// Set static array
@@ -200,9 +203,10 @@ abstract class JHtmlBootstrap
 
 		// Attach the dropdown to the document
 		JFactory::getDocument()->addScriptDeclaration(
-			"(function($){
-				$('.$selector').dropdown();
-				})(jQuery);"
+			"jQuery(document).ready(function()
+			{
+				jQuery('.$selector').dropdown();
+			});"
 		);
 
 		self::$loaded[__METHOD__][$selector] = true;
@@ -279,9 +283,10 @@ abstract class JHtmlBootstrap
 
 			// Attach the modal to document
 			JFactory::getDocument()->addScriptDeclaration(
-				"(function($){
-					$('#$selector').modal($options);
-					})(jQuery);"
+				"jQuery(document).ready(function()
+				{
+					jQuery('#$selector').modal($options);
+				});"
 			);
 
 			// Set static array
@@ -415,9 +420,10 @@ abstract class JHtmlBootstrap
 
 			// Attach ScrollSpy to document
 			JFactory::getDocument()->addScriptDeclaration(
-				"(function($){
-					$('#$selector').scrollspy($options);
-					})(jQuery);"
+				"jQuery(document).ready(function()
+				{
+					jQuery('#$selector').scrollspy($options);
+				});"
 			);
 
 			// Set static array
@@ -578,9 +584,10 @@ abstract class JHtmlBootstrap
 
 			// Attach accordion to document
 			JFactory::getDocument()->addScriptDeclaration(
-				"(function($){
-					$('#$selector').collapse($options);
-				})(jQuery);"
+				"jQuery(document).ready(function()
+				{
+					jQuery('#$selector').collapse($options);
+				});"
 			);
 
 			// Set static array
@@ -665,8 +672,6 @@ abstract class JHtmlBootstrap
 
 			// Setup options object
 			$opt['active'] = (isset($params['active']) && ($params['active'])) ? (string) $params['active'] : '';
-
-			$options = JHtml::getJSObject($opt);
 
 			// Attach tabs to document
 			JFactory::getDocument()
@@ -762,16 +767,15 @@ abstract class JHtmlBootstrap
 			// Setup options object
 			$opt['active'] = (isset($params['active']) && ($params['active'])) ? (string) $params['active'] : '';
 
-			$options = JHtml::getJSObject($opt);
-
 			// Attach tooltips to document
 			JFactory::getDocument()->addScriptDeclaration(
-				"(function($){
-					$('#$selector a').click(function (e) {
+				"jQuery(document).ready(function()
+				{
+					jQuery('#$selector a').click(function(e) {
 						e.preventDefault();
-						$(this).tab('show');
+						jQuery(this).tab('show');
 					});
-				})(jQuery);"
+				});"
 			);
 
 			// Set static array
