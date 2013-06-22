@@ -20,17 +20,17 @@ abstract class ModTagssimilarHelper
 {
 	public static function getList(&$params)
 	{
-		$db         = JFactory::getDbo();
-		$app        = JFactory::getApplication();
-		$user       = JFactory::getUser();
-		$groups     = implode(',', $user->getAuthorisedViewLevels());
-		$matchtype  = $params->get('matchtype', 'all');
-		$maximum    = $params->get('maximum', 5);
+		$db = JFactory::getDbo();
+		$app = JFactory::getApplication();
+		$user = JFactory::getUser();
+		$groups = implode(',', $user->getAuthorisedViewLevels());
+		$matchtype = $params->get('matchtype', 'all');
+		$maximum = $params->get('maximum', 5);
 		$tagsHelper = new JHelperTags;
-		$option     = $app->input->get('option');
-		$view       = $app->input->get('view');
-		$prefix     = $option . '.' . $view;
-		$id         = (array) $app->input->getObject('id');
+		$option = $app->input->get('option');
+		$view = $app->input->get('view');
+		$prefix = $option . '.' . $view;
+		$id = (array) $app->input->getObject('id');
 
 		// Strip off any slug data.
 		foreach ($id as $id)
@@ -38,15 +38,16 @@ abstract class ModTagssimilarHelper
 			if (substr_count($id, ':') > 0)
 			{
 				$idexplode = explode(':', $id);
-				$id        = $idexplode[0];
+				$id = $idexplode[0];
 			}
 		}
 
 		// For now assume com_tags and com_users do not have tags.
 		// This module does not apply to list views in general at this point.
-		if ($option != 'com_tags' && $view != 'category'  && $option != 'com_users')
+		if ($option != 'com_tags' && $view != 'category' && $option != 'com_users')
 		{
 			$tagsToMatch = $tagsHelper->getTagIds($id, $prefix);
+
 			if (!$tagsToMatch || is_null($tagsToMatch))
 			{
 				return $results = false;
@@ -56,21 +57,21 @@ abstract class ModTagssimilarHelper
 
 			$query = $db->getQuery(true)
 				->select(
-				array(
-					$db->quoteName('m.tag_id'),
-					$db->quoteName('m.core_content_id'),
-					$db->quoteName('m.content_item_id'),
-					$db->quoteName('m.type_alias'),
-						'COUNT( '  . $db->quoteName('tag_id') . ') AS ' . $db->quoteName('count'),
-					$db->quoteName('t.access'),
-					$db->quoteName('t.id'),
-					$db->quoteName('ct.router'),
-					$db->quoteName('cc.core_title'),
-					$db->quoteName('cc.core_alias'),
-					$db->quoteName('cc.core_catid'),
-					$db->quoteName('cc.core_language')
+					array(
+						$db->quoteName('m.tag_id'),
+						$db->quoteName('m.core_content_id'),
+						$db->quoteName('m.content_item_id'),
+						$db->quoteName('m.type_alias'),
+						'COUNT( ' . $db->quoteName('tag_id') . ') AS ' . $db->quoteName('count'),
+						$db->quoteName('t.access'),
+						$db->quoteName('t.id'),
+						$db->quoteName('ct.router'),
+						$db->quoteName('cc.core_title'),
+						$db->quoteName('cc.core_alias'),
+						$db->quoteName('cc.core_catid'),
+						$db->quoteName('cc.core_language')
 					)
-			);
+				);
 
 			$query->from($db->quoteName('#__contentitem_tag_map', 'm'));
 
@@ -96,18 +97,20 @@ abstract class ModTagssimilarHelper
 				{
 					$language = JHelperContent::getCurrentLanguage();
 				}
+
 				$query->where($db->quoteName('cc.core_language') . ' IN (' . $db->quote($language) . ', ' . $db->quote('*') . ')');
 			}
 
 			$query->group($db->quoteName(array('m.core_content_id')));
+
 			if ($matchtype == 'all' && $tagCount > 0)
 			{
-				$query->having('COUNT( '  . $db->quoteName('tag_id') . ')  = ' . $tagCount);
+				$query->having('COUNT( ' . $db->quoteName('tag_id') . ')  = ' . $tagCount);
 			}
 			elseif ($matchtype == 'half' && $tagCount > 0)
 			{
 				$tagCountHalf = ceil($tagCount / 2);
-				$query->having('COUNT( '  . $db->quoteName('tag_id') . ')  >= ' . $tagCountHalf);
+				$query->having('COUNT( ' . $db->quoteName('tag_id') . ')  >= ' . $tagCountHalf);
 			}
 
 			$query->order($db->quoteName('count') . ' DESC');

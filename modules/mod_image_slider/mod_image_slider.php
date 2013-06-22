@@ -12,18 +12,19 @@ defined('_JEXEC') or die;
 // Include the syndicate functions only once
 require_once __DIR__ . '/helper.php';
 
-$link = $params->get('link');
+$slideSet = ModImageSliderHelper::getSlides($params);
 
-$folder = ModRandomImageHelper::getFolder($params);
-$images = ModRandomImageHelper::getImages($params, $folder);
+$id	= $module->id;
 
-if (!count($images))
-{
-	echo JText::_('MOD_RANDOM_IMAGE_NO_IMAGES');
+$interval = (int) $params->get('interval', 5000);
+$autostart = $params->get('autostart', 1);
+$navigation = $params->get('navigation', 1);
+$controls = $params->get('controls', 1);
 
-	return;
+// Carousel interval also defines autostart
+if (!$autostart) {
+	$interval = 'false';
 }
 
-$image = ModRandomImageHelper::getRandomImage($params, $images);
 $moduleclass_sfx = htmlspecialchars($params->get('moduleclass_sfx'));
-require JModuleHelper::getLayoutPath('mod_random_image', $params->get('layout', 'default'));
+require JModuleHelper::getLayoutPath('mod_image_slider', $params->get('layout', 'default'));
