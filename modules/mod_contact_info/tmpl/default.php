@@ -14,7 +14,7 @@ defined('_JEXEC') or die;
 	<?php if (!empty($dataContact)) : ?>
 		<!-- check each show/hide entry -->
 		<?php if ($params->get('name_linked') == "1") : ?>
-			<?php $url = "index.php?option=com_contact&view=contact&id=" . $dataContact->id; ?>
+			<?php $url = JRoute::_("index.php?option=com_contact&view=contact&id=" . $dataContact->id); ?>
 			<a href="<?php echo $url; ?>"><?php echo $dataContact->name; ?></a>
 			<br>
 		<?php else : ?>

@@ -39,8 +39,8 @@ abstract class ModTagsselectedHelper
 		{
 			if (substr_count($id, ':') > 0)
 			{
-				$idexplode = explode(':', $id);
-				$id = $idexplode[0];
+				$parts = explode(':', $id);
+				$id = $parts[0];
 			}
 		}
 

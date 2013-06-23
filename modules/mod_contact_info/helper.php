@@ -26,7 +26,7 @@ class ModContactsInfoHelper
 			$query = $db->getQuery(true);
 			$query->select($selector);
 			$query->from($table);
-			$query->where($field . '= \'' . $id . '\'');
+			$query->where($db->quoteName($field) . ' = ' . $db->quote($id));
 			$db->setQuery($query);
 			$db->query();
 
