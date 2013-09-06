@@ -71,6 +71,7 @@ class ModuleManagerPage extends AdminManagerPage
 			array('client' => 'site', 'name' => 'Weblinks'),
 			array('client' => 'site', 'name' => 'Who\'s Online'),
 			array('client' => 'site', 'name' => 'Wrapper'),
+			array('client' => 'site', 'name' => 'Maps'),
 			array('client' => 'administrator', 'name' => 'Admin sub-Menu'),
 			array('client' => 'administrator', 'name' => 'Administrator Menu'),
 			array('client' => 'administrator', 'name' => 'Custom HTML'),
